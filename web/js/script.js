@@ -3,7 +3,7 @@
    - Sản phẩm mặc định: 50 sản phẩm, 30 sản phẩm/trang.
 */
 
-const productsPerPage = 30;
+const productsPerPage = 12;
 let currentPage = 1;
 let totalPages = 0;
 
@@ -135,6 +135,9 @@ function openProductDetail(productId) {
 }
 
 function addToWishlist(productName, productId) {
+  let productImg = document.querySelector(`#${productId} .product-image`);
+  let imgSrc = productImg ? productImg.src : "defaultImage.jpg";
+
   let wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
   if (!wishlist.some(item => item.id === productId)) {
     wishlist.push({
